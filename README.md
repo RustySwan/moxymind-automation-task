@@ -8,3 +8,40 @@ Language and build tools:
 Test tools:
 * jUnit
 * Playwright
+
+## Text execution
+
+To run tests in terminal user can be run via gradlew task and execute them with commands:
+
+For unix based OS:
+```shell
+./gradlew test
+```
+User can execute only UI tests with `uiTest` gradle task:
+```shell
+./gradlew uiTest
+```
+
+In the case of Windows OS:
+```shell
+gradlew.bat test
+```
+or
+```shell
+gradlew.bat uiTest
+```
+
+In the case of UI tests, headles mode is true by default. In the case this is not wanted behaviour, user can alter this
+by adding parameter into gradle task command.
+
+For unix based OS:
+```shell
+./gradlew test -Dheadless=true
+```
+
+In the case of Windows OS:
+```shell
+gradlew.bat test -Dheadless=true
+```
+
+Same applies for `uiTest` gradle task.
