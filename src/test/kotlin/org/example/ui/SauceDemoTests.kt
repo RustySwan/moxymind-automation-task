@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
 @Tag("UI")
-@UsePlaywright(SauceDemo.SauceDemoOptions::class)
-class SauceDemo {
+@UsePlaywright(SauceDemoTests.SauceDemoOptions::class)
+class SauceDemoTests {
 
     class SauceDemoOptions : TestOptions(
         headless = System.getProperty("headless").toBoolean(),

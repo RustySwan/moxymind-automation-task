@@ -1,5 +1,6 @@
 package org.example.ui.configuration
 
+import com.microsoft.playwright.APIRequest
 import com.microsoft.playwright.Browser
 import com.microsoft.playwright.junit.Options
 import com.microsoft.playwright.junit.OptionsFactory
@@ -12,23 +13,19 @@ import com.microsoft.playwright.junit.OptionsFactory
  * @property apiBaseUrl - api base url
  */
 open class TestOptions(
-    private val headless: Boolean,
+    private val headless: Boolean? = null,
     private val uiBaseUrl: String? = null,
     private val apiBaseUrl: String? = null
 ) : OptionsFactory {
 
     override fun getOptions(): Options {
         return Options()
-            .setHeadless(headless)
             .apply {
+                headless?.let { this.headless = it }
                 // Set ui base url if present
-                if (uiBaseUrl != null) {
-                    this.setContextOptions(Browser.NewContextOptions().setBaseURL(uiBaseUrl))
-                }
-                // Set api base url if present
-                if (apiBaseUrl != null) {
-                    this.setContextOptions(Browser.NewContextOptions().setBaseURL(apiBaseUrl))
-                }
+                uiBaseUrl?.let { this.setContextOptions(Browser.NewContextOptions().setBaseURL(uiBaseUrl)) }
+                // Set ui base url if present
+                apiBaseUrl?.let { this.setApiRequestOptions(APIRequest.NewContextOptions().setBaseURL(apiBaseUrl)) }
             }
     }
 }
