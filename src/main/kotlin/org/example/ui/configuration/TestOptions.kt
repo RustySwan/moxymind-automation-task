@@ -13,7 +13,7 @@ import com.microsoft.playwright.junit.OptionsFactory
  * @property apiBaseUrl - api base url
  */
 open class TestOptions(
-    private val headless: Boolean? = null,
+    private val headlessDriver: Boolean? = null,
     private val uiBaseUrl: String? = null,
     private val apiBaseUrl: String? = null
 ) : OptionsFactory {
@@ -21,7 +21,7 @@ open class TestOptions(
     override fun getOptions(): Options {
         return Options()
             .apply {
-                headless?.let { this.headless = it }
+                headlessDriver?.let { this.headless = it }
                 // Set ui base url if present
                 uiBaseUrl?.let { this.setContextOptions(Browser.NewContextOptions().setBaseURL(uiBaseUrl)) }
                 // Set ui base url if present
