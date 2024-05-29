@@ -49,9 +49,12 @@ class ReqResTests {
         }
 
         // Assert if total value represents real data size.
-        // TODO
-//        assert(jsonResponseObj.total == jsonResponseObj.data.size)
-//        { "Total value is not equal to size of data object. Total value is '${jsonResponseObj.total}' and size is '${jsonResponseObj.data.size}'" }
+        assert(jsonResponseObj.perPage == jsonResponseObj.data.size)
+
+        // Ensure total is at least the number of users on this page
+        assert(jsonResponseObj.total >= jsonResponseObj.data.size) {
+            "The total number of users should be greater than or equal to the number of users in the current page"
+        }
     }
 
     @ParameterizedTest
