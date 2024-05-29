@@ -26,26 +26,31 @@ User can execute only UI/APU tests with `uiTest`/`apiTest` gradle task:
 ```
 In the case of Windows OS:
 ```shell
-gradlew.bat test
+./gradlew.bat test
 ```
 or
 ```shell
-gradlew.bat uiTest
+./gradlew.bat uiTest
 ```
 ```shell
-gradlew.bat apiTest
+./gradlew.bat apiTest
 ```
-In the case of UI tests, headles mode is true by default. In the case this is not wanted behaviour, user can alter this
+In the case of UI tests, headless mode is true by default. In the case this is not wanted behaviour, user can alter this
 by adding parameter into gradle task command.
 
 For unix based OS:
 ```shell
-./gradlew test -Dheadless=true
+./gradlew test -Dheadless=false
 ```
 
 In the case of Windows OS:
 ```shell
-gradlew.bat test -Dheadless=true
+./gradlew.bat test -Dheadless=false
 ```
 
 Same applies for `uiTest` gradle task.
+
+## Reports
+
+Reports can be found in build folder:
+``<root>/reports/tests/<task_name>/index.html``

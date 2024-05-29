@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 class SauceDemoTests {
 
     class SauceDemoOptions : TestOptions(
-        headless = System.getProperty("headless").toBoolean(),
+        headlessDriver = System.getProperty("headless").toBoolean(),
         uiBaseUrl = "https://www.saucedemo.com/"
     )
 
